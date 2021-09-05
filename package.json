@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "start": "cd reactStoreServer && npm start"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/yehiel9523/fakestore-full-app.git"
