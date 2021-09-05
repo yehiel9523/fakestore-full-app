@@ -1,0 +1,17 @@
+{
+    "name": "fakestore-full-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yehiel9523/fakestore-full-app.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/yehiel9523/fakestore-full-app/issues"
+    },
+    "homepage": "https://github.com/yehiel9523/fakestore-full-app#readme"
+}
