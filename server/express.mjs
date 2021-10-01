@@ -15,7 +15,7 @@ app.use(express.json());
 //         next()
 // })
 
-app.use(express.static('./build/'));
+app.use(express.static('../client/build/'));
 // const products = loadJson.sync('./products.json')
 
 app.get('/products', async(req, res) => {
