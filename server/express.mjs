@@ -60,5 +60,5 @@ app.put('/products/:id', async(req, res) => {
         res.send(err.message)
     }
 })
-const PORT = process.env.PORT || 8000;
-app.listen(PORT);
+const port = process.env.PORT || 8000;
+app.listen(port);
