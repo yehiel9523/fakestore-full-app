@@ -1,29 +1,17 @@
 import express from 'express';
-import cors from 'cors';
-import loadJson from 'load-json-file';
-import { shabbatBlockerMiddleware, shbbatDateObj } from 'shabbatpackage';
+import { shabbatBlockerMiddleware } from 'shabbatpackage';
 import './connect.mjs';
 import { getProducts, getProduct, addProduct, deletePoduct, updateProduct } from './connect.mjs'
+
 const app = express();
+
 app.use(express.json());
-// app.use((req, res, next) => {
-//     const now = new Date();
-//     if ((now.getDay() === 5 && now.getHours() >= 19) || (now.getDay() === 3 && now.getHours() < 21)) {
-//         // app.use(express.static('/'))
-//         res.set('Content-Type', 'text/html');
-//         res.sendFile('./shabbat.html', { root: '.' })
-//     } else
-//         next()
-// })
-app.use(shabbatBlockerMiddleware(shbbatDateObj));
+app.use(shabbatBlockerMiddleware());
 app.use(express.static('../client/build/'));
-// const products = loadJson.sync('./products.json')
 
 app.get('/products', async(req, res) => {
     res.send(await getProducts(req.query));
 });
-
-
 
 app.post('/products', async(req, res) => {
     try {
@@ -34,6 +22,7 @@ app.post('/products', async(req, res) => {
         res.send(err.message)
     }
 })
+
 app.get('/products/:_id', async(req, res) => {
     try {
         res.send(await getProduct(req.params._id));
@@ -43,6 +32,7 @@ app.get('/products/:_id', async(req, res) => {
         res.send(err.message)
     }
 })
+
 app.delete('/products/:id', async(req, res) => {
     try {
         res.send(await deletePoduct(req.params.id))
@@ -52,6 +42,7 @@ app.delete('/products/:id', async(req, res) => {
         res.send(err.message)
     }
 })
+
 app.put('/products/:id', async(req, res) => {
     try {
         res.send(await updateProduct(req.params.id, req.body))
@@ -61,5 +52,6 @@ app.put('/products/:id', async(req, res) => {
         res.send(err.message)
     }
 })
+
 const port = process.env.PORT || 8000;
 app.listen(port);
