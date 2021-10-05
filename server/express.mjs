@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import loadJson from 'load-json-file';
+import { shabbatBlockerMiddleware, shbbatDateObj } from 'shabbatpackage';
 import './connect.mjs';
 import { getProducts, getProduct, addProduct, deletePoduct, updateProduct } from './connect.mjs'
 const app = express();
@@ -14,7 +15,7 @@ app.use(express.json());
 //     } else
 //         next()
 // })
-
+app.use(shabbatBlockerMiddleware(shbbatDateObj));
 app.use(express.static('../client/build/'));
 // const products = loadJson.sync('./products.json')
 
